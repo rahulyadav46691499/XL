@@ -1,0 +1,288 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: hsl(220 20% 97%);
+  --foreground: hsl(222 25% 12%);
+  --card: hsl(0 0% 100%);
+  --card-foreground: hsl(222 25% 12%);
+  --popover: hsl(0 0% 100%);
+  --popover-foreground: hsl(222 25% 12%);
+  --primary: hsl(14 100% 60%);
+  --primary-foreground: hsl(0 0% 100%);
+  --secondary: hsl(220 16% 93%);
+  --secondary-foreground: hsl(222 20% 25%);
+  --muted: hsl(220 16% 93%);
+  --muted-foreground: hsl(220 9% 46%);
+  --accent: hsl(220 16% 93%);
+  --accent-foreground: hsl(222 25% 12%);
+  --destructive: hsl(0 84% 60%);
+  --destructive-foreground: hsl(0 0% 98%);
+  --border: hsl(220 13% 88%);
+  --input: hsl(220 13% 88%);
+  --ring: hsl(14 100% 60%);
+  --radius: 0.75rem;
+  --sidebar: hsl(0 0% 100%);
+  --sidebar-border: hsl(220 13% 90%);
+  --topbar: hsl(0 0% 100%);
+
+  /* Brand — the single action colour. Reserved for things you can click. */
+  --brand: #FF5B35;
+  --brand-strong: #ff3d12;
+  --brand-wash: #FF5B3514;
+
+  /* Decision status palette. Validated against the white card surface with
+     dataviz/validate_palette.js: CVD ΔE 11.0, normal-vision ΔE 22.6, all ≥3:1.
+     Rejected is deliberately neutral — a dead-end shouldn't shout louder than
+     a shortlist, and a red here collides with the brand orange (ΔE 11.6). */
+  --decision-interview: #047857;
+  --decision-hold: #d97706;
+  --decision-rejected: #64748b;
+  --decision-interview-wash: #04785714;
+  --decision-hold-wash: #d9770614;
+  --decision-rejected-wash: #64748b14;
+
+  /* Text colour to sit ON each decision fill. Measured, not assumed: white on
+     the amber fill is only 3.19:1 and fails for label text, so amber takes ink
+     while the other two keep white. */
+  --decision-interview-ink: #ffffff; /* 5.48:1 */
+  --decision-hold-ink: #1c1917;      /* 6.18:1 */
+  --decision-rejected-ink: #ffffff;  /* 4.76:1 */
+
+  /* Skill categories in the word cloud. Validated all-pairs against the white
+     card surface AND against --brand, since chips sit beside brand-coloured
+     UI: worst CVD ΔE 8.1, worst normal-vision ΔE 21.4, all ≥3:1.
+     "Other" is a warm neutral on purpose — it is the residual bucket, and
+     every third hue tried (violet, magenta, cool gray) collided with either
+     the blue or the brand orange. */
+  --cat-tech: #2a78d6;
+  --cat-soft: #119c6d;
+  --cat-other: #57534e;
+
+  /* Section-heading ink: a shade darker than muted body text, so headings
+     read as headings without going full black. */
+  --heading: hsl(222 22% 26%);
+
+  /* Destructive: errors, invalid fields, delete. One pair, so the twenty
+     hardcoded `red-500`s that used to carry this can't drift apart — and so
+     the dark theme gets its own step rather than a light-theme red. */
+  --danger: #dc2626;
+  --danger-strong: #b91c1c;
+  --danger-wash: #dc262614;
+
+  /* Chart chrome — recessive by design. */
+  --chart-track: hsl(220 16% 91%);
+  --chart-grid: hsl(220 13% 90%);
+}
+
+.dark {
+  --background: hsl(225 22% 6%);
+  --foreground: hsl(210 20% 92%);
+  --card: hsl(225 20% 9%);
+  --card-foreground: hsl(210 20% 92%);
+  --popover: hsl(225 20% 9%);
+  --popover-foreground: hsl(210 20% 92%);
+  --primary: hsl(14 100% 60%);
+  --primary-foreground: hsl(0 0% 100%);
+  --secondary: hsl(225 16% 15%);
+  --secondary-foreground: hsl(210 20% 82%);
+  --muted: hsl(225 16% 15%);
+  --muted-foreground: hsl(215 12% 55%);
+  --accent: hsl(225 16% 15%);
+  --accent-foreground: hsl(210 20% 92%);
+  --destructive: hsl(0 62% 50%);
+  --destructive-foreground: hsl(0 0% 98%);
+  --border: hsl(225 16% 15%);
+  --input: hsl(225 16% 15%);
+  --ring: hsl(14 100% 60%);
+  --sidebar: hsl(225 22% 7%);
+  --sidebar-border: hsl(225 16% 14%);
+  --topbar: hsl(225 20% 8%);
+
+  /* Dark steps are selected for the dark card surface (#12151c), not flipped.
+     Re-validated at that surface: CVD ΔE 10.3, normal-vision ΔE 20.0, all ≥3:1. */
+  --brand: #FF7A54;
+  --brand-strong: #FF5B35;
+  --brand-wash: #FF7A5420;
+
+  --decision-interview: #10b981;
+  --decision-hold: #fab219;
+  --decision-rejected: #94a3b8;
+  --decision-interview-wash: #10b98120;
+  --decision-hold-wash: #fab21920;
+  --decision-rejected-wash: #94a3b820;
+
+  /* All three dark fills are light steps chosen for the dark surface, so white
+     text fails on every one (2.54 / 1.83 / 2.56). Dark ink clears 7:1+. */
+  --decision-interview-ink: #0b0b0b; /* 7.76:1 */
+  --decision-hold-ink: #0b0b0b;      /* 10.73:1 */
+  --decision-rejected-ink: #0b0b0b;  /* 7.68:1 */
+
+  /* Re-stepped for the dark card surface, not flipped. The light teal fails
+     against blue on a dark surface, so soft-skills moves to cyan here — the
+     pair that clears the floor differs per surface. Worst CVD ΔE 10.1,
+     worst normal-vision ΔE 15.2, all ≥3:1. */
+  --cat-tech: #5598e7;
+  --cat-soft: #22d3ee;
+  --cat-other: #a8a29e;
+
+  --heading: hsl(210 20% 86%);
+
+  --danger: #f87171;
+  --danger-strong: #ef4444;
+  --danger-wash: #f8717120;
+
+  --chart-track: hsl(225 16% 17%);
+  --chart-grid: hsl(225 16% 16%);
+}
+
+@theme inline {
+  --font-sans: var(--font-sans), system-ui, sans-serif;
+  --font-mono: var(--font-mono), ui-monospace, monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-topbar: var(--topbar);
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+}
+
+/* The default border colour, and it must sit INSIDE @layer base.
+   Unlayered CSS beats every layered rule in the cascade whatever the
+   specificity, so while this was unlayered it silently overrode every
+   Tailwind border-colour utility in the app — `border-[var(--brand)]/40`,
+   `border-red-500/30` and the rest all rendered as this grey. */
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  /* Plex Sans is a touch tighter than Inter at UI sizes; open it back up. */
+  letter-spacing: -0.005em;
+}
+
+/* ─── Type roles ────────────────────────────────────────────────────────────
+   Three roles, not seventy-nine ad-hoc sizes.
+
+   .eyebrow  — the small caps label above a section. Mono, because it names a
+               measurement.
+   .numeral  — any figure the eye compares to another figure. Mono + tabular,
+               so digits stack in a column and a 9 is exactly as wide as a 1.
+   .readout  — the large single figure on a stat tile. Same instrument face,
+               scaled up, tightened.
+   ------------------------------------------------------------------------ */
+.eyebrow {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  /* Section headings sit a shade darker than body muted text — on request,
+     so a heading reads as a heading on every page. */
+  color: var(--heading);
+}
+
+/* The same label at card-title scale — "Job details", "Role criteria",
+   "Candidate Analysis". Bigger on request; a plain `text-[Npx]` utility can't
+   do it, since `.eyebrow` is defined after Tailwind's utilities and wins. */
+.eyebrow-lg {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--heading);
+}
+
+.numeral {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+.readout {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+/* ─── Quality floor ─────────────────────────────────────────────────────────
+   Neither of these existed before: keyboard users got no focus indicator at
+   all, and every transition ran regardless of the OS motion setting. */
+:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* One orchestrated entrance, not scattered effects: the page settles in
+   reading order as the data arrives. */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.rise {
+  animation: rise 0.42s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+/* The travelling fill of `components/ProgressBar.tsx`. Indeterminate on
+   purpose: the batch comes back in one response, so there is no percentage. */
+@keyframes progress-slide {
+  from { transform: translateX(-110%); }
+  to   { transform: translateX(420%); }
+}
+
+.progress-indeterminate {
+  width: 24%;
+  animation: progress-slide 1.15s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+/* The reduced-motion rule above stops the slide after one pass, which would
+   leave a stub parked off-screen. Sit still and full-width instead. */
+@media (prefers-reduced-motion: reduce) {
+  .progress-indeterminate { width: 100%; }
+}
+
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--muted-foreground); }

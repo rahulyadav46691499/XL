@@ -1,0 +1,190 @@
+We are looking for a highly skilled Generative AI Engineer to design, develop, and deploy enterprise-grade AI solutions leveraging Large Language Models (LLMs), Retrieval-Augmented Generation (RAG), AI Agents, and modern cloud technologies. The ideal candidate should have strong experience in Python, Machine Learning, NLP, LLM orchestration frameworks, vector databases, and cloud platforms, with a passion for building scalable AI-powered business applications.
+The candidate will collaborate with business stakeholders, data engineers, product teams, and solution architects to develop innovative GenAI solutions that drive business transformation and operational efficiency.
+
+Key Responsibilities
+Generative AI & LLM Development
+
+Design, develop, and deploy applications using OpenAI, Azure OpenAI, Anthropic Claude, Gemini, Llama, and other LLMs.
+Build and optimize Retrieval-Augmented Generation (RAG) pipelines.
+Develop Agentic AI systems capable of planning, reasoning, and executing complex workflows.
+Create and evaluate prompts, prompt templates, and prompt engineering strategies.
+Fine-tune and customize Large Language Models where required.
+Implement AI guardrails for responsible and secure AI usage.
+
+AI Agent Development
+
+Build autonomous and multi-agent systems using frameworks such as:
+
+LangGraph
+CrewAI
+AutoGen
+OpenAI Agents SDK
+Semantic Kernel
+
+
+Design agent orchestration workflows and task planning mechanisms.
+Develop AI copilots and enterprise assistants.
+
+NLP & Machine Learning
+
+Build NLP solutions for:
+
+Document processing
+Information extraction
+Text classification
+Summarization
+Semantic search
+
+
+Train, evaluate, and deploy machine learning models.
+Develop model monitoring and evaluation frameworks.
+
+Data Engineering & RAG
+
+Develop document ingestion pipelines from:
+
+PDFs
+Word documents
+Excel files
+Emails
+Databases
+
+
+Implement vector search solutions using:
+
+Pinecone
+FAISS
+ChromaDB
+Weaviate
+Azure AI Search
+
+
+Optimize chunking, embeddings, and retrieval strategies.
+
+Cloud & Deployment
+
+Deploy GenAI applications on AWS, Azure, or GCP.
+Develop REST APIs and microservices using FastAPI or Flask.
+Containerize applications using Docker and Kubernetes.
+Implement CI/CD pipelines for AI applications.
+
+Governance & Security
+
+Implement responsible AI practices.
+Ensure compliance with enterprise security and governance standards.
+Manage PII, sensitive data handling, and AI risk controls.
+Monitor model performance, hallucinations, and drift.
+
+
+Required Qualifications
+Educational Qualification
+
+Bachelor's or Master's degree in:
+
+Computer Science
+Data Science
+Artificial Intelligence
+Machine Learning
+Related field
+
+
+
+Technical Skills
+Programming
+
+Python (Mandatory)
+SQL
+Git
+
+Generative AI
+
+LLMs (GPT, Claude, Gemini, Llama, Mistral)
+Prompt Engineering
+RAG Architecture
+Agentic AI
+Fine-Tuning
+Function Calling / Tool Usage
+
+Frameworks
+
+LangChain
+LangGraph
+LlamaIndex
+CrewAI
+AutoGen
+Semantic Kernel
+
+Machine Learning
+
+Scikit-Learn
+TensorFlow or PyTorch
+NLP Techniques
+Model Evaluation
+
+Databases
+
+PostgreSQL
+SQL Server
+Snowflake
+Vector Databases
+
+Cloud Platforms
+
+AWS
+Azure
+GCP
+
+Deployment
+
+FastAPI
+Docker
+Kubernetes
+CI/CD
+
+
+Preferred Qualifications
+
+Experience building enterprise AI assistants or copilots.
+Experience with multi-agent systems.
+Experience with Knowledge Graphs and Graph RAG.
+Familiarity with MLOps and LLMOps tools.
+Experience with Azure OpenAI, Amazon Bedrock, or Vertex AI.
+Knowledge of Responsible AI and AI Governance frameworks.
+
+
+Nice to Have
+
+Experience with healthcare, insurance, banking, or analytics domains.
+Experience building HRTech or Recruitment AI solutions.
+Experience developing resume screening and talent acquisition platforms.
+Exposure to OCR, document intelligence, and computer vision.
+
+
+Key Competencies
+
+Problem-solving mindset
+Strong analytical skills
+Excellent communication skills
+Stakeholder management
+Solution design and architecture
+Ability to work in agile environments
+Continuous learning attitude
+
+
+Sample Projects Candidate Should Have Worked On
+
+AI Resume Screening Platform
+Intelligent Document Processing Solution
+Enterprise Knowledge Assistant
+Multi-Agent Workflow Automation System
+Chatbot with RAG Architecture
+AI Copilot for Business Operations
+GenAI-based Analytics Assistant
+Autonomous Recruitment Agent
+
+Experience Level Suggestions:
+
+3–5 Years: GenAI Engineer
+5–8 Years: Senior GenAI Engineer
+8+ Years: Lead AI Engineer / AI Architect
+

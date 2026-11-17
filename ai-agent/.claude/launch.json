@@ -1,0 +1,23 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "backend",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": [
+        "-c",
+        "cd \"/Users/rahulyadav/Downloads/TalentAI 16 Sept/backend\" && .venv/bin/python -m uvicorn app.main:app --timeout-graceful-shutdown 3 --port 8000"
+      ],
+      "port": 8000
+    },
+    {
+      "name": "frontend",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": [
+        "-c",
+        "cd \"/Users/rahulyadav/Downloads/TalentAI 16 Sept/frontend\" && npm run dev"
+      ],
+      "port": 3000
+    }
+  ]
+}

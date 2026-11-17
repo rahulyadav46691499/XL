@@ -1,0 +1,22 @@
+# Dependencies, build output, caches: rebuilt by the install (RUNNING.md)
+node_modules/
+.venv/
+__pycache__/
+*.pyc
+.next/
+*.tsbuildinfo
+.DS_Store
+
+# API keys: never commit
+.env
+llm_config.json
+
+# Candidate data: real people's personal information
+backend/chroma_db/
+backend/resume_files/
+backend/interview_files/
+backend/jd_files/
+backend/voice/sessions/
+backend/voice/transcripts/
+resumes/
+presentation/

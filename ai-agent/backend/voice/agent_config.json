@@ -1,0 +1,192 @@
+{
+  "llm_config": {
+    "agent_config": {
+      "agent_variables": {
+        "agent_name": {
+          "value": "Simran",
+          "type": "string",
+          "description": "The recruiter's first name, the persona of the voice this call speaks in",
+          "needs_initial_value": true,
+          "is_agent_updatable": false,
+          "update_post_interaction": false
+        },
+        "greeting": {
+          "value": "Hello, you've reached EXL's hiring team. Thank you for calling. I'm sorry, I don't have your details in front of me right now, so a recruiter from our team will call you back.",
+          "type": "string",
+          "description": "This call's opening line, written by TalentAI's voice/script.py greeting(); the default is the apology for a caller TalentAI has no record of",
+          "needs_initial_value": true,
+          "is_agent_updatable": false,
+          "update_post_interaction": false
+        },
+        "candidate_name": {
+          "value": "",
+          "type": "string",
+          "description": "The candidate's name",
+          "needs_initial_value": true,
+          "is_agent_updatable": false,
+          "update_post_interaction": false
+        },
+        "jd_role": {
+          "value": "",
+          "type": "string",
+          "description": "The role the candidate applied for",
+          "needs_initial_value": true,
+          "is_agent_updatable": false,
+          "update_post_interaction": false
+        },
+        "primary_location": {
+          "value": "",
+          "type": "string",
+          "description": "Where the job is based",
+          "needs_initial_value": true,
+          "is_agent_updatable": false,
+          "update_post_interaction": false
+        },
+        "jd_description": {
+          "value": "",
+          "type": "string",
+          "description": "The job description, for answering the candidate's questions about the role",
+          "needs_initial_value": true,
+          "is_agent_updatable": false,
+          "update_post_interaction": false
+        },
+        "candidate_profile": {
+          "value": "",
+          "type": "string",
+          "description": "The candidate's resume in brief: experience, skills and fit",
+          "needs_initial_value": true,
+          "is_agent_updatable": false,
+          "update_post_interaction": false
+        },
+        "call_script": {
+          "value": "NO SCRIPT. Ask nothing and answer nothing. On your first turn, end the call with a short goodbye: this is the EXL hiring team, and a recruiter will call them back.",
+          "type": "string",
+          "description": "This call's screening questions with their next-question rules, rendered by TalentAI's voice_agent/script.py",
+          "needs_initial_value": true,
+          "is_agent_updatable": false,
+          "update_post_interaction": false
+        },
+        "answers_so_far": {
+          "value": "",
+          "type": "string",
+          "description": "Screening questions the candidate already answered on earlier calls, with their answers",
+          "needs_initial_value": true,
+          "is_agent_updatable": false,
+          "update_post_interaction": false
+        },
+        "answers_json": {
+          "value": "",
+          "type": "string",
+          "description": "The candidate's answers as JSON keyed by script key",
+          "needs_initial_value": false,
+          "is_agent_updatable": false,
+          "update_post_interaction": true,
+          "post_interaction_prompt": "Return ONLY a JSON object, with no prose and no code fence. Add one entry for each question below that the candidate answered on this call, keyed exactly as written here and never renamed: \"key\": {\"transcript\": \"...\", \"value\": \"...\", \"volunteered\": false}. transcript is the candidate's own words for that answer, in English, quoted rather than paraphrased. value is in the format given for the key, or an empty string when the answer is unclear. volunteered is true only when the candidate gave that answer before the question was put to them. Leave out questions the candidate never answered. If nothing was answered, return {}.\nKeys:\n- right_time: whether now is a good time to talk. value: yes or no\n- callback_time: when to call them back. value: ISO 8601 date and time with the +05:30 offset\n- still_interested: whether they are still interested in the job. value: yes or no\n- self_intro: their introduction of themselves. value: an empty string\n- current_location: where they live now. value: the town or city named\n- relocate: whether they will relocate for the job. value: yes or no\n- ok_workplace: whether the workplace mode suits them. value: yes or no\n- on_notice: whether they are serving notice now. value: yes or no\n- notice_days_left: days left in their notice period. value: a whole number of days (weeks times 7, months times 30)\n- willing_to_resign: whether they would resign if selected. value: yes, maybe or no\n- notice_days: the length of their notice period. value: a whole number of days (weeks times 7, months times 30)\n- buyout: whether their company offers a notice buyout. value: yes or no\n- bgc_documents: whether they have their background-check documents. value: yes or no\n- interviewed_elsewhere: whether they have interviewed elsewhere. value: yes or no\n- other_offer: whether they have or expect another offer. value: yes or no\n- offer_details: the other organisation, role and package. value: an empty string\n- interview_stage: what stage they are at elsewhere. value: an empty string\n- current_ctc: their current CTC. value: a whole number of rupees per year (lakh or LPA times 100000, crore times 10000000, a monthly figure times 12, the higher figure of a range)\n- expected_ctc: their expected CTC. value: a whole number of rupees per year (lakh or LPA times 100000, crore times 10000000, a monthly figure times 12, the higher figure of a range)\n- negotiable: whether their expected CTC is negotiable. value: yes or no\n- join_reason: why they want to join EXL. value: an empty string\n- r1_availability: which weekdays and at what time they are free for a next-round interview. value: the weekdays and times they gave, written briefly, for example \"Mon to Wed, 2 pm to 5 pm\" or \"Any weekday, after 6 pm\"\n- risk_0: their answer to CV-specific question number 1 (a gap, a job change or another point from their resume), in the order they were asked. value: an empty string\n- risk_1: their answer to CV-specific question number 2 (a gap, a job change or another point from their resume), in the order they were asked. value: an empty string\n- risk_2: their answer to CV-specific question number 3 (a gap, a job change or another point from their resume), in the order they were asked. value: an empty string\n- risk_3: their answer to CV-specific question number 4 (a gap, a job change or another point from their resume), in the order they were asked. value: an empty string\n- risk_4: their answer to CV-specific question number 5 (a gap, a job change or another point from their resume), in the order they were asked. value: an empty string"
+        },
+        "screening_outcome": {
+          "value": "",
+          "type": "enum",
+          "one_of": [
+            "completed",
+            "callback_requested",
+            "not_interested",
+            "incomplete"
+          ],
+          "description": "How the screening call ended",
+          "needs_initial_value": false,
+          "is_agent_updatable": false,
+          "update_post_interaction": true,
+          "post_interaction_prompt": "Classify how this screening call ended. completed: the candidate answered the questions through to the closing. callback_requested: the candidate asked to be called back later. not_interested: the candidate said they are not interested and declined to continue. incomplete: the call ended before the screening finished for any other reason, such as a dropped line, silence or the wrong person answering."
+        },
+        "callback_at": {
+          "value": "",
+          "type": "string",
+          "description": "The callback time the candidate agreed, ISO 8601 India time",
+          "needs_initial_value": false,
+          "is_agent_updatable": false,
+          "update_post_interaction": true,
+          "post_interaction_prompt": "If the candidate asked to be called back and agreed a day and time, give that moment as ISO 8601 with the +05:30 offset, for example 2026-10-18T18:00:00+05:30. Work it out from the call's start time {{start_datetime}}, which is India time. If the candidate named another time zone, convert the time to India time. If no callback time was agreed, return an empty string."
+        },
+        "communication_score": {
+          "value": "",
+          "type": "integer",
+          "description": "How clearly the candidate communicated, 0 to 100",
+          "needs_initial_value": false,
+          "is_agent_updatable": false,
+          "update_post_interaction": true,
+          "post_interaction_prompt": "You are an experienced recruiter reviewing this phone screening. Rate the CANDIDATE only, never the agent, on one 0 to 100 scale for communication: did their answers address the questions asked, clearly enough for a recruiter to act on? Be generous and fair. Short, direct answers are good phone manner; never mark down for brevity, a plain manner or an accent. Reserve low scores for answers that never address the question or speech nobody could follow. Calibration: 85 to 100 excellent, 70 to 84 good (most candidates who engage properly), 55 to 69 workable with gaps, below 55 only for real difficulty being understood. The transcript comes from speech recognition on a phone line, so never penalise garbled words. Judge only how they communicated, never what they answered. Return only the integer. If the candidate answered no screening questions, return 0."
+        },
+        "communication_summary": {
+          "value": "",
+          "type": "string",
+          "description": "One or two sentences on how the candidate communicated",
+          "needs_initial_value": false,
+          "is_agent_updatable": false,
+          "update_post_interaction": true,
+          "post_interaction_prompt": "In one or two constructive sentences a recruiter can act on, describe how the candidate communicated on this call: clarity, structure and relevance, not the content of their answers. If the candidate answered no screening questions, return an empty string."
+        },
+        "user_name": null,
+        "role_applied_for": null,
+        "call_summary": null,
+        "expected_salary": null,
+        "key_skills": null,
+        "next_round_availability": null,
+        "notice_period": null,
+        "total_experience": null
+      },
+      "states": {
+        "start": {
+          "goal": "Screen {{candidate_name}} for the {{jd_role}} role by asking the questions in the call script, one at a time, following each line's next rule, until the script says to close the call, a callback time is agreed, or the candidate declines to continue.",
+          "agent_variables_in_context": [
+            "candidate_name",
+            "jd_role",
+            "primary_location",
+            "jd_description",
+            "call_script"
+          ]
+        }
+      },
+      "supported_languages": [
+        "English",
+        "Hindi"
+      ]
+    }
+  },
+  "language_config": {
+    "initial_language_name": "English",
+    "supported_languages": [
+      "English",
+      "Hindi"
+    ],
+    "lid_supported_languages": [
+      "English",
+      "Hindi"
+    ]
+  },
+  "speech_to_text_config": {
+    "asr_model_name": "saarika-v4"
+  },
+  "text_to_speech_config": {
+    "config_version": "2.0",
+    "internal_id": "01a0cf17-12bd-7de3-9df0-f607db604d52",
+    "speech_settings": {
+      "pace": 1.0
+    }
+  },
+  "intro_message_config": {
+    "audio": "{{greeting}}"
+  },
+  "tool_runner_parameters": {
+    "parameters": {
+      "handle_voicemail_tool": {
+        "voicemail_message": "Hello {{candidate_name}}, this is {{agent_name}} from the EXL hiring team, calling about your application for the {{jd_role}} role. We will try you again soon. Thank you."
+      },
+      "change_output_language": {
+        "allowed_languages": [
+          "English",
+          "Hindi"
+        ]
+      }
+    }
+  }
+}
